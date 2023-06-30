@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="olivedrab">#6b8e23</color>
+    <color name="primary_100">#00b14f</color>
 
 </resources>

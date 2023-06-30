@@ -81,7 +81,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_remove_cricle"
-                    app:tint="@color/purple_700" />
+                    app:tint="@color/primary_100" />
 
 
                 <TextView
@@ -101,7 +101,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_add_circle"
-                    app:tint="@color/purple_700" />
+                    app:tint="@color/primary_100" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
