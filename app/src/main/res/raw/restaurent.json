@@ -91,7 +91,7 @@
       {
         "name": "Cheese Dog",
         "price": 3.59,
-        "url": "https://www.cookingpanda.com/wp-content/uploads/2020/07/7R26235-16x9-1-scaled.jpg"
+        "url": "https://i.pinimg.com/originals/17/e1/07/17e107ed6aacb8cedd79e36ee8dec51a.jpg"
       },
       {
         "name": "Midway Monster",
@@ -111,40 +111,26 @@
       {
         "name": "Chocolate Shake",
         "price": 4.95,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Chocolate-McCafe-Shake-Medium.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/e4/b3/8a/e4b38a26cde54d278782c26e806316e7.jpg"
       },
       {
         "name": "Strawberry Shake",
         "price": 3.59,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Strawberry-McCafe-Shake-Medium.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/55/80/be/5580be4bfb50b3ddcb66088570c94090.jpg"
       },
       {
         "name": "Filet-O-Fish",
         "price": 5.49,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Filet-O-Fish.png?$Product_Desktop$"
-      },
-      {
-        "name": "McNuggets",
-        "price": 3.99,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Chicken-McNuggets-4pc.jpg?$Product_Desktop$"
-      },
-      {
-        "name": "Combo Meal",
-        "price": 8.29,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/assets/meal/desktop/h-mcdonalds-Big-Mac-Extra-Value-Meals.jpg?$Product_Desktop$"
-      },
-      {
-        "name": "McMuffin Meal",
-        "price": 6.99,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/assets/meal/desktop/h-mcdonalds-Egg-McMuffin-Extra-Value-Meals.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/a2/68/fb/a268fb8433159c5164cea594e489c6bf.jpg"
       }
+
     ]
   },
   {
     "name":"McDonald's",
     "address":"10975 State Bridge Rd.",
     "delivery_charge": 5,
-    "image":"https://www.mcdonalds.com/content/dam/usa/nfl/assets/nav/arches-logo_108x108.jpg",
+    "image":"https://i.pinimg.com/originals/05/70/b1/0570b1be85dc41e815af891ed7d811c3.jpg",
     "hours":{
       "Sunday":"11:00 AM - 7:00 PM",
       "Monday":"10:00 AM - 10:00 PM",
@@ -158,27 +144,27 @@
       {
         "name": "Chocolate Shake",
         "price": 4.95,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Chocolate-McCafe-Shake-Medium.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/e4/b3/8a/e4b38a26cde54d278782c26e806316e7.jpg"
       },
       {
         "name": "Strawberry Shake",
         "price": 3.59,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Strawberry-McCafe-Shake-Medium.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/55/80/be/5580be4bfb50b3ddcb66088570c94090.jpg"
       },
       {
         "name": "Filet-O-Fish",
         "price": 5.49,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Filet-O-Fish.png?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/a2/68/fb/a268fb8433159c5164cea594e489c6bf.jpg"
       },
       {
         "name": "McNuggets",
         "price": 3.99,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Chicken-McNuggets-4pc.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/fd/1f/f5/fd1ff531fa1bd281ce3d31cc0a29354e.png"
       },
       {
         "name": "Combo Meal",
         "price": 8.29,
-        "url": "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/assets/meal/desktop/h-mcdonalds-Big-Mac-Extra-Value-Meals.jpg?$Product_Desktop$"
+        "url": "https://i.pinimg.com/originals/e4/d4/55/e4d455defe412342d8fd272d6bd41fed.jpg"
       },
       {
         "name": "McMuffin Meal",
