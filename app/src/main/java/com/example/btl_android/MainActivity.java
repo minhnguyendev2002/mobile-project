@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements RestaurantListAda
         RestaurantModel[] restaurantModels =  gson.fromJson(jsonStr, RestaurantModel[].class);
         List<RestaurantModel> restList = Arrays.asList(restaurantModels);
         return  restList;
-
     }
 
     @Override
