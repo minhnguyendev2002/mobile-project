@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:text="Order places successfully."
+        android:text="Order successfully."
         android:layout_margin="30dp"
         />
 
