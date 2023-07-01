@@ -4,10 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Menu implements Parcelable {
+    private int id;
     private String name;
     private float price;
     private int totalInCart;
     private String url;
+
+    public Menu(int id, String name, float price, String url) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.url = url;
+        this.totalInCart = 0;
+    }
 
     public int getTotalInCart() {
         return totalInCart;
@@ -36,6 +45,9 @@ public class Menu implements Parcelable {
         }
     };
 
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

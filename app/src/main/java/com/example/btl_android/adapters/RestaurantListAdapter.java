@@ -41,7 +41,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     public void onBindViewHolder(@NonNull RestaurantListAdapter.MyViewHolder holder, int position) {
         holder.restaurantName.setText(restaurantModelList.get(position).getName());
         holder.restaurantAddress.setText("Address: "+restaurantModelList.get(position).getAddress());
-        holder.restaurantHours.setText("Today's hours: " + restaurantModelList.get(position).getHours().getTodaysHours());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,14 +64,12 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView  restaurantName;
         TextView  restaurantAddress;
-        TextView  restaurantHours;
         ImageView thumbImage;
 
         public MyViewHolder(View view) {
             super(view);
             restaurantName = view.findViewById(R.id.restaurantName);
             restaurantAddress = view.findViewById(R.id.restaurantAddress);
-            restaurantHours = view.findViewById(R.id.restaurantHours);
             thumbImage = view.findViewById(R.id.thumbImage);
 
         }

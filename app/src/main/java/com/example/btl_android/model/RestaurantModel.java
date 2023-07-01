@@ -6,13 +6,23 @@ import android.os.Parcelable;
 import java.util.List;
 
 public class RestaurantModel implements Parcelable {
+    private int id;
     private String name;
     private String address;
     private String image;
-    private float delivery_charge;
     private Hours hours;
     private List<Menu> menus;
 
+    public RestaurantModel(int id, String name, String address, String image) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -37,13 +47,6 @@ public class RestaurantModel implements Parcelable {
         this.image = image;
     }
 
-    public float getDelivery_charge() {
-        return delivery_charge;
-    }
-
-    public void setDelivery_charge(float delivery_charge) {
-        this.delivery_charge = delivery_charge;
-    }
 
     public Hours getHours() {
         return hours;
@@ -61,11 +64,11 @@ public class RestaurantModel implements Parcelable {
         this.menus = menus;
     }
 
-    protected RestaurantModel(Parcel in) {
+    public RestaurantModel(Parcel in) {
+        id = in.readInt();
         name = in.readString();
         address = in.readString();
         image = in.readString();
-        delivery_charge = in.readFloat();
         menus = in.createTypedArrayList(Menu.CREATOR);
     }
 
@@ -88,10 +91,10 @@ public class RestaurantModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(address);
         dest.writeString(image);
-        dest.writeFloat(delivery_charge);
         dest.writeTypedList(menus);
     }
 }

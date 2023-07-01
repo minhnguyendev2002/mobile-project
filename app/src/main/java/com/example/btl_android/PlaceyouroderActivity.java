@@ -1,6 +1,8 @@
 package com.example.btl_android;
 
 
+import static java.lang.Float.parseFloat;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,11 +23,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl_android.adapters.PlaceYourOrderAdapter;
+import com.example.btl_android.helper.RestaurantHelper;
 import com.example.btl_android.model.Menu;
 import com.example.btl_android.model.RestaurantModel;
+import com.example.btl_android.model.CheckoutModel;
+
+import java.util.List;
 
 public class PlaceyouroderActivity extends AppCompatActivity {
-    private EditText inputName, inputAddress, inputCity, inputState, inputZip,inputCardNumber, inputCardExpiry, inputCardPin ;
+    private RestaurantHelper restaurantHelper;
+    private EditText inputName, inputAddress, inputCity, inputCardNumber, inputCardExpiry, inputCardPin ;
     private RecyclerView cartItemsRecyclerView;
     private TextView tvSubtotalAmount, tvDeliveryChargeAmount, tvDeliveryCharge, tvTotalAmount, buttonPlaceYourOrder;
     private SwitchCompat switchDelivery;
@@ -46,11 +53,11 @@ public class PlaceyouroderActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        restaurantHelper = new RestaurantHelper(this);
+
         inputName = findViewById(R.id.inputName);
         inputAddress = findViewById(R.id.inputAddress);
         inputCity = findViewById(R.id.inputCity);
-        inputState = findViewById(R.id.inputState);
-        inputZip = findViewById(R.id.inputZip);
         inputCardNumber = findViewById(R.id.inputCardNumber);
         inputCardExpiry = findViewById(R.id.inputCardExpiry);
         inputCardPin = findViewById(R.id.inputCardPin);
@@ -59,7 +66,6 @@ public class PlaceyouroderActivity extends AppCompatActivity {
         tvDeliveryCharge = findViewById(R.id.tvDeliveryCharge);
         tvTotalAmount = findViewById(R.id.tvTotalAmount);
         buttonPlaceYourOrder = findViewById(R.id.buttonPlaceYourOrder);
-        switchDelivery = findViewById(R.id.switchDelivery);
 
         cartItemsRecyclerView = findViewById(R.id.cartItemsRecyclerView);
 
@@ -70,30 +76,6 @@ public class PlaceyouroderActivity extends AppCompatActivity {
             }
         });
 
-        switchDelivery.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    inputAddress.setVisibility(View.VISIBLE);
-                    inputCity.setVisibility(View.VISIBLE);
-                    inputState.setVisibility(View.VISIBLE);
-                    inputZip.setVisibility(View.VISIBLE);
-                    tvDeliveryChargeAmount.setVisibility(View.VISIBLE);
-                    tvDeliveryCharge.setVisibility(View.VISIBLE);
-                    isDeliveryOn = true;
-                    calculateTotalAmount(restaurantModel);
-                } else {
-                    inputAddress.setVisibility(View.GONE);
-                    inputCity.setVisibility(View.GONE);
-                    inputState.setVisibility(View.GONE);
-                    inputZip.setVisibility(View.GONE);
-                    tvDeliveryChargeAmount.setVisibility(View.GONE);
-                    tvDeliveryCharge.setVisibility(View.GONE);
-                    isDeliveryOn = false;
-                    calculateTotalAmount(restaurantModel);
-                }
-            }
-        });
         initRecyclerView(restaurantModel);
         calculateTotalAmount(restaurantModel);
     }
@@ -110,10 +92,6 @@ private void calculateTotalAmount(RestaurantModel restaurantModel) {
     }
 
     tvSubtotalAmount.setText("$"+String.format("%.2f", subTotalAmount));
-    if(isDeliveryOn) {
-        tvDeliveryChargeAmount.setText("$"+String.format("%.2f", restaurantModel.getDelivery_charge()));
-        subTotalAmount += restaurantModel.getDelivery_charge();
-    }
     tvTotalAmount.setText("$"+String.format("%.2f", subTotalAmount));
 }
 
@@ -122,16 +100,13 @@ private void calculateTotalAmount(RestaurantModel restaurantModel) {
         if(TextUtils.isEmpty(inputName.getText().toString())) {
             inputName.setError("Please enter name ");
             return;
-        } else if(isDeliveryOn && TextUtils.isEmpty(inputAddress.getText().toString())) {
+        }else if(TextUtils.isEmpty(inputAddress.getText().toString())) {
             inputAddress.setError("Please enter address ");
             return;
-        }else if(isDeliveryOn && TextUtils.isEmpty(inputCity.getText().toString())) {
+        }else if(TextUtils.isEmpty(inputCity.getText().toString())) {
             inputCity.setError("Please enter city ");
             return;
-        }else if(isDeliveryOn && TextUtils.isEmpty(inputState.getText().toString())) {
-            inputState.setError("Please enter zip ");
-            return;
-        }else if( TextUtils.isEmpty(inputCardNumber.getText().toString())) {
+        }else if(TextUtils.isEmpty(inputCardNumber.getText().toString())) {
             inputCardNumber.setError("Please enter card number ");
             return;
         }else if( TextUtils.isEmpty(inputCardExpiry.getText().toString())) {
@@ -141,10 +116,36 @@ private void calculateTotalAmount(RestaurantModel restaurantModel) {
             inputCardPin.setError("Please enter card pin/cvv ");
             return;
         }
+
+        String name = inputName.getText().toString();
+        String address = inputAddress.getText().toString();
+        String city = inputCity.getText().toString();
+        String cardNumber = inputCardNumber.getText().toString();
+        String cardExpiry = inputCardExpiry.getText().toString();
+        String cardPin = inputCardPin.getText().toString();
+
+        String total = tvTotalAmount.getText().toString();
+
+        restaurantHelper.insertCheckoutInfo(name, address, city, cardNumber, cardExpiry, cardPin, total, getMenuIds(restaurantModel.getMenus()));
+
         //start success activity..
         Intent i = new Intent(PlaceyouroderActivity.this, SuccessOrderActivity.class);
         i.putExtra("RestaurantModel", restaurantModel);
         startActivityForResult(i, 1000);
+    }
+
+    private String getMenuIds(List<Menu> menus) {
+        StringBuilder idString = new StringBuilder();
+
+        for (Menu menu : menus) {
+            idString.append(menu.getId()).append(",");
+        }
+
+        if (idString.length() > 0) {
+            idString.deleteCharAt(idString.length() - 1);
+        }
+
+        return idString.toString();
     }
 
     private void initRecyclerView(RestaurantModel restaurantModel) {
